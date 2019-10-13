@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const Parser = require('rss-parser');
 
 // User model
 const User = require('../models/User');
@@ -105,6 +106,8 @@ router.get('/dashboard', (req, res) => res.render('dashboard'));
 // Handle Dashboard
 router.post('/dashboard', (req, res, next) => {
 
+    const { link } = req.body;
+
     passport.authenticate('local', (err, user, info) => {
         console.log('Inside passport.authenticate() callback');
         console.log(`req.session.passport: ${JSON.stringify(req.session.passport)}`)
@@ -142,9 +145,9 @@ router.post('/dashboard', (req, res, next) => {
     console.log(newUser);
     newUser.save().then(function(){
         User.findOne({email: newUser.email}).then(function(record){
-            record.urls.push({link: 'www.reddit.com/frontpage7'}); //email: newUser.email,
+            record.urls.push({link: link}); //email: newUser.email,
             record.save().then(user => {
-                req.flash('success_msg', 'You are now registered, please log in');
+                req.flash('success_msg', 'You have successfully submitted a new link');
                 res.redirect('/dashboard');
             })
             .catch(err => console.log(err));
