@@ -1,3 +1,38 @@
 <h1 class="mt-4">Dashboard</h1>
 <p class="lead mb-3">Welcome <%= name %></p>
+<!-- <p class="lead mb-3">Urls:  <%= urls %></p> -->
+<ul>
+    <% urls.forEach(function(o) { %>
+        <li><%= o.link %> </li>
+    <% }); %>
+</ul>
+<!-- -->
+
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">
+          <i class="fas fa-user-plus"></i> Add Links
+        </h1>
+        <form action="/users/dashboard" method="POST">
+          <div class="form-group">
+            <label for="link">RSS-Feed</label>
+            <input
+              type="link"
+              id="link"
+              name="link"
+              class="form-control"
+              placeholder="Enter RSS-Feed link"
+              value="<%= typeof link != 'undefined' ? link : '' %>"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Add Link
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!--  -->
 <a href="/users/logout" class="btn btn-secondary">Logout</a>
