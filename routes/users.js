@@ -109,9 +109,11 @@ router.post('/dashboard', (req, res, next) => {
     const { link } = req.body;
 
     passport.authenticate('local', (err, user, info) => {
+        /* // Test logs
         console.log('Inside passport.authenticate() callback');
         console.log(`req.session.passport: ${JSON.stringify(req.session.passport)}`)
         console.log(`req.user: ${JSON.stringify(req.user)}`)
+        */
         
     //     const testUser = await User.findOne();
 

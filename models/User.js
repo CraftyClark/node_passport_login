@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const UrlSchema = new mongoose.Schema({
-    // _id: String,
+    _id: false,
     // email: String,
     link: String
 });
