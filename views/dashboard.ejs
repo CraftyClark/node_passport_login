@@ -1,12 +1,9 @@
 <h1 class="mt-4">Dashboard</h1>
 <p class="lead mb-3">Welcome <%= name %></p>
 <!-- <p class="lead mb-3">Urls:  <%= urls %></p> -->
-<ul>
-    <% urls.forEach(function(o) { %>
-        <li><%= o.link %> </li>
-    <% }); %>
-</ul>
+
 <!-- -->
+
 
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
@@ -34,5 +31,16 @@
     </div>
   </div>
 
+  <% feeds.forEach(function(o) { %>
+    <li><%= o.title %> </li>
+    <ul>
+      <% o.items.forEach(function(i) { %>
+        <li><%= i.title %></li>
+        <li><%= i.link %></li>
+        <li><%= i.contentSnippet %></li>
+        <li><%= i.pubDate %></li>
+      <% }); %>
+    </ul>
+  <% }); %>
 <!--  -->
 <a href="/users/logout" class="btn btn-secondary">Logout</a>
