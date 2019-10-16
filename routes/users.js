@@ -114,40 +114,13 @@ router.post('/dashboard', (req, res, next) => {
         console.log(`req.session.passport: ${JSON.stringify(req.session.passport)}`)
         console.log(`req.user: ${JSON.stringify(req.user)}`)
         */
-        
-    //     const testUser = await User.findOne();
-
-    //     testUser.urls = 'www.reddit.com';
-
-        // let testUser = new User(req.body);
-        // testUser.urls = "https://www.reddit.com";
-        // console.log(testUser);
-        // User = testUser;
-        // User.save(function(){})
-
-        // .then(user => {
-        //     req.flash('success_msg', 'Link submitted');
-        //     res.redirect('/dashboard');
-        // })
-        // .catch(err => console.log(err));
-        //function(){});
-
-
-    //     req.login(user, (err) => {
-    //       console.log('Inside req.login() callback')
-    //       console.log(`req.session.passport: ${JSON.stringify(req.session.passport)}`)
-    //       console.log(`req.user: ${JSON.stringify(req.user)}`)
-    //     //   return res.send('You were authenticated & logged in!\n');
-    //     })
-
 
     let newUser = new User(req.user);
-    // var newUser = new User(req.body);
     console.log('new user email');
     console.log(newUser);
     newUser.save().then(function(){
         User.findOne({email: newUser.email}).then(function(record){
-            record.urls.push({link: link}); //email: newUser.email,
+            record.urls.push({link: link}); 
             record.save().then(user => {
                 req.flash('success_msg', 'You have successfully submitted a new link');
                 res.redirect('/dashboard');
@@ -159,29 +132,6 @@ router.post('/dashboard', (req, res, next) => {
 
       })(req, res, next);
 
-   
-    
-    // const link = req.body;
-    // let errors = [];
-
-    // if(!link) {
-    //     errors.push({ msg: 'Please provide a link url' });
-    // }
-
-    // if(errors.length > 0) {
-    //     res.render('dashboard', {
-    //         link
-    //     });
-    // }
-    // else {
-    //     //console.log(req.user.name);
-    //     // User.find({ email: email }, function(err, user) {
-    //     //     if (err) throw err;
-           
-    //     //     // object of the user
-    //     //     console.log(user);
-    //     //   });
-    // }
     
 });
 
