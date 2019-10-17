@@ -49,28 +49,30 @@
     </div>
 <!--  -->
 <!--  -->
-    <div class="container-fluid">
+    <div class="container-fluid"></div>
       <table class ="table">
         <thead>
           <tr>
             <div class="col-3"><th scope="col">Source</th></div>
-            <div class="col-6"><th scope="col">Title</th></div>
-            <div class="col-1"><th scope="col">Description</th></div>
-            <div class="col-2"><th scope="col">Published Date</th></div>
+            <div class="col-3"><th scope="col">Title</th></div>
+            <div class="col-3"><th scope="col">Description</th></div>
+            <div class="col-3"><th scope="col">Published Date</th></div>
           </tr>
         </thead>
         <tbody>
           <tr>
-     
+      
       <% feeds.forEach(function(o) { %>
+        <% let count = 0; %>
         <% o.items.forEach(function(i) { %>
-    
-          <th scope="row"> <%= o.title %> </th>
-            <td style="font-size:25px;">
-              <a href="<%= i.link %>" target="_blank">
-                  <%= i.title %>
-              </a>
-            </td>
+            <% count++; %>
+            <% if(count<6){ %>
+          <td> <%= o.title %> </td>
+          <td style="font-size:25px;">
+            <a href="<%= i.link %>" target="_blank">
+                <%= i.title %>
+            </a>
+          </td>
           <td>
               <button type="button" class="btn btn-lg btn-primary" data-toggle="popover"
               
@@ -80,7 +82,7 @@
           </td>
           <td><%= i.pubDate %></td>
         </tr>
-      
+        <% } %>
        <% }); %>
       <% }); %>
 
@@ -95,6 +97,7 @@
 div.popover-body{
   font-size: 20px;
 }
+
 </style>
 
 

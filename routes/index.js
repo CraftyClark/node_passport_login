@@ -19,6 +19,7 @@ router.get('/dashboard', ensureAuthenticated, async (req, res) => {
             feeds: data,
         })
     })
+
 });
 
 module.exports = router;
