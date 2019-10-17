@@ -1,46 +1,103 @@
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= name %></p>
-<!-- <p class="lead mb-3">Urls:  <%= urls %></p> -->
 
-<!-- -->
-
-
-<div class="row mt-5">
-    <div class="col-md-6 m-auto">
-      <div class="card card-body">
-        <h1 class="text-center mb-3">
-          <i class="fas fa-user-plus"></i> Add Links
-        </h1>
-        <form action="/users/dashboard" method="POST">
-          <div class="form-group">
-            <label for="link">RSS-Feed</label>
-            <input
-              type="link"
-              id="link"
-              name="link"
-              class="form-control"
-              placeholder="Enter RSS-Feed link"
-              value="<%= typeof link != 'undefined' ? link : '' %>"
-            />
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">
-            Add Link
-          </button>
-        </form>
+  <a href="/users/logout" class="btn btn-secondary float-right">Logout</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" style="font-size:30px;" >Dashboard</a>
+      <ul class="navbar-nav>
+        <a class="navbar-link float-right" style="font-size:25px;" >Welcome <%= name %></a>  
+      </ul>
+  </nav>
+  <!-- Saved Feeds -->
+  <div class="row mt-5">
+      <div class="col-md-6 m-auto">
+        <div class="card card-body">
+          <h1 class="text-center mb-3">
+            <i class="fas fa-rss-square"></i> Saved Feeds
+          </h1>
+              <% feeds.forEach(function(i) { %>
+              <li><%= i.title %> </li>
+              <% }); %> 
+            <!-- -->
+        </div>
       </div>
     </div>
-  </div>
 
-  <% feeds.forEach(function(o) { %>
-    <li><%= o.title %> </li>
-    <ul>
-      <% o.items.forEach(function(i) { %>
-        <li><%= i.title %></li>
-        <li><%= i.link %></li>
-        <li><%= i.contentSnippet %></li>
-        <li><%= i.pubDate %></li>
-      <% }); %>
-    </ul>
-  <% }); %>
+  <!-- Add Links -->
+  <div class="row mt-5">
+      <div class="col-md-6 m-auto">
+        <div class="card card-body">
+          <h1 class="text-center mb-3">
+            <i class="fas fa-user-plus"></i> Add Links
+          </h1>
+          <form action="/users/dashboard" method="POST">
+            <div class="form-group">
+              <label for="link">RSS-Feed</label>
+              <input
+                type="link"
+                id="link"
+                name="link"
+                class="form-control"
+                placeholder="Enter RSS-Feed link"
+                value="<%= typeof link != 'undefined' ? link : '' %>"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Add Link
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
 <!--  -->
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
+<!--  -->
+    <div class="container-fluid">
+      <table class ="table">
+        <thead>
+          <tr>
+            <div class="col-3"><th scope="col">Source</th></div>
+            <div class="col-6"><th scope="col">Title</th></div>
+            <div class="col-1"><th scope="col">Description</th></div>
+            <div class="col-2"><th scope="col">Published Date</th></div>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+     
+      <% feeds.forEach(function(o) { %>
+        <% o.items.forEach(function(i) { %>
+    
+          <th scope="row"> <%= o.title %> </th>
+            <td style="font-size:25px;"> 
+              <%= i.title %>
+            </td>
+          <td>
+              <button type="button" class="btn btn-lg btn-danger" data-toggle="popover"
+              
+              data-content="<%= (i.contentSnippet).replace(/\&nbsp;/g, '\n') %>" 
+              >
+               Description</button>
+          </td>
+          <td><%= i.pubDate %></td>
+        </tr>
+      
+       <% }); %>
+      <% }); %>
+
+      </tbody>
+    </table>
+  </div>
+    
+
+    </div>
+    <!--  -->
+    <!--    -->
+
+
+  <!--  -->
+
+<style>
+div.popover-body{
+  font-size: 20px;
+}
+</style>
+
+
