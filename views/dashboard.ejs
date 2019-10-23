@@ -1,7 +1,7 @@
   <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="index.html">Dashboard</a>
+    <a class="navbar-brand">Dashboard</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,7 +36,13 @@
               <li><%= i.title %> </li>
               <% }); %> 
               <br>
-              <ul>*<%= savedFeedsCount*5 %> articles displayed*</ul>
+              <a href="#article-list" class="btn btn-primary">
+                <button type="button" class="btn btn-primary">
+                  Articles Displayed <span class="badge badge-light">
+                    <%= savedFeedsCount*5 %>
+                  </span> 
+                </button>
+              </a>
             <!-- -->
         </div>
       </div>
@@ -73,7 +79,7 @@
 <br />
 <!--  -->
 <!--  -->
-    <div class="container-fluid"></div>
+    <div class="container-fluid" id="article-list"></div>
       <table class ="table">
         <thead>
           <tr>
