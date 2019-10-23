@@ -1,11 +1,28 @@
-
-  <a href="/users/logout" class="btn btn-secondary float-right">Logout</a>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" style="font-size:30px;" >Dashboard</a>
-      <ul class="navbar-nav>
-        <a class="navbar-link float-right" style="font-size:25px;" >Welcome <%= name %></a>  
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link">Welcome <%= name %>
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+        <li class="nav-item">
+            <a href="/users/logout" class="btn btn-secondary float-right">Logout</a>
+        </li>
       </ul>
-  </nav>
+    </div>
+  </div>
+</nav>
+
+<!--  -->
+
+
   <!-- Saved Feeds -->
   <div class="row mt-5">
       <div class="col-md-6 m-auto">
