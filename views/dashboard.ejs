@@ -100,7 +100,7 @@
             <% count++; %>
             <% if(count<6){ %>
           <td> <%= o.title %> </td>
-          <td style="font-size:25px;">
+          <td>
             <a href="<%= i.link %>" target="_blank">
                 <%= i.title %>
             </a>
@@ -138,7 +138,11 @@
 
 <style>
 div.popover-body{
-  font-size: 20px;
+  font-size: 1rem;
+}
+
+td {
+  font-size: 1rem;
 }
 
 </style>
