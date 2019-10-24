@@ -85,10 +85,10 @@
       <table class ="table">
         <thead>
           <tr>
-            <div class="col-3"><th scope="col">Source</th></div>
+            <div class="col-3"><th scope="col" class="d-none d-md-block">Source</th></div>
             <div class="col-3"><th scope="col">Title</th></div>
             <div class="col-3"><th scope="col">Description</th></div>
-            <div class="col-3"><th scope="col">Published Date</th></div>
+            <div class="col-3"><th scope="col" class="d-none d-md-block">Published Date</th></div>
           </tr>
         </thead>
         <tbody>
@@ -99,7 +99,7 @@
         <% o.items.forEach(function(i) { %>
             <% count++; %>
             <% if(count<6){ %>
-          <td> <%= o.title %> </td>
+          <td class="d-none d-md-block"> <%= o.title %> </td>
           <td>
             <a href="<%= i.link %>" target="_blank">
                 <%= i.title %>
@@ -112,7 +112,7 @@
               >
                Description</button>
           </td>
-          <td><%= i.pubDate %></td>
+          <td class="d-none d-md-block"><%= i.pubDate %></td>
         </tr>
         <% } %>
        <% }); %>
